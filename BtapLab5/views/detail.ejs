@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chi tiết sản phẩm</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+        .header { display: flex; justify-content: space-between; align-items: center; background: #f4f4f4; padding: 10px 20px; margin-bottom: 20px; }
+        .product-detail { display: flex; gap: 30px; margin-top: 20px; }
+        .product-detail img { max-width: 400px; border-radius: 8px; border: 1px solid #ddd; }
+        .info { max-width: 500px; }
+        .price { color: #e44d26; font-size: 24px; font-weight: bold; }
+        .btn { padding: 10px 15px; background: #007bff; color: white; text-decoration: none; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        .btn:hover { background: #0056b3; }
+        .btn-back { background: #6c757d; margin-right: 10px; }
+        .btn-back:hover { background: #5a6268; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h2>Cửa Hàng Điện Tử</h2>
+        <h3><a href="/cart" style="text-decoration: none; color: #ff5722;">🛒 Giỏ hàng (<%= cartCount %>)</a></h3>
+    </div>
+
+    <div class="product-detail">
+        <img src="<%= product.imageUrl %>" alt="<%= product.name %>">
+        
+        <div class="info">
+            <h1><%= product.name %></h1>
+            <p class="price"><%= product.price.toLocaleString() %> VNĐ</p>
+            <p><strong>Mô tả:</strong> <%= product.description %></p>
+            
+            <div style="margin-top: 20px; display: flex;">
+                <a href="/" class="btn btn-back">⬅ Quay lại</a>
+                
+                <form action="/cart/add/<%= product._id %>" method="POST">
+                    <button type="submit" class="btn">Thêm vào giỏ</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
